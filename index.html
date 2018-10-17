@@ -1,10 +1,107 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>BOI</title>
-</head>
-<body>
 
-</body>
-</html>ghg
+console.log("hello world")
+//samanburður í javascript
+//<
+//>
+//<=
+//>=
+/*
+let nr = 9;
+nr >10 => stærra í breytunni nr
+nr <10 => minna í breytunni nr
+nr >=10 => stæra og jafnt og nr
+nr <=10 => minna og jafnt og nr
+nr !=10 => ekki 10
+nr ==10 => er 10
+nr === => er 10 og sama datatýpa lika
+
+nr == "9" => skilar true
+nr === "9" => skilar false
+
+//logical and =>&&
+//logical or => ||
+*/
+//dæmi um logical and og samanburð
+let score1 = 8; //round 1 score
+let score2 = 8; //round 2score
+let pass1 = 6; //round 1 pass mark
+let pass2 = 6; //round 2 pass mark
+
+let passBoth = (score1 >= pass1) && (score2 >= pass2);
+
+let msg = 'Both rounds passed: ' + passBoth;
+
+console.log(msg);
+
+//if setningar
+//notið til að þess að keyra kóða þegar ákveðum skiliðurum er fullnægt
+//dæmi um if setningar
+
+let score =75;   //score
+let msg;         //Message
+
+if (score >= 50) {// if score is 50 or higher
+    msg = 'congratulations!';
+    msg += 'proceed to the next round';
+}
+
+console.log(msg);
+
+
+//dæmi um if setninngar og fall
+let score = 75;    //score
+let msg = '';      //message
+
+function congratulate() {
+    msg += 'Congratulatons!';
+}
+
+if (score >=50) {//if score is more
+    congratulate(); //kallað á fallið congratulate sem
+                    //er búið til ílínu 59
+msg += 'proceed to the next round.';
+}
+
+console.log(msg);
+
+// dæmi um if og else setningar
+let pass = 50;       //pass mark
+let score = 75       //current score
+let msg              //message
+
+//Select message to whrite based on score
+if(score > pass) {
+    msg = 'congratulations,you passed';
+}else {
+    msg = 'have another go!';
+}
+
+console.log(msg);
+
+
+//switch skipun
+//athugar innihald í breytu.mun bregðast við ólíkn hátt
+//við óliku innihaldi
+
+//dæmi um switch setningu
+let msg;          //message
+let level = 2;    //level
+
+//determine message based on level
+switch (level) {//level er breytan sem við ætlum að athuga
+    case 1:
+        msg 'good luck on the first test';
+        break;
+
+    case 2:
+        msg = 'second of three - keep going';
+        break
+
+    case 3:
+        msg = 'final round, almost there!';
+        break;
+
+    default:
+        msg = 'good luck';
+        break
+}
