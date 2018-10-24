@@ -105,3 +105,55 @@ switch (level) {//level er breytan sem við ætlum að athuga
         msg = 'good luck';
         break
 }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+
+//það er hægt að búa til elements og geyma þau i burtu
+let newEL = document.createElement('li');
+
+//til þess að setja streng inn i element sem  við höfum búið til að þa þurfum við að bua til
+//þann texta sem TextNote. Nuna er strengurinn "quinoa" í breytuna newText
+let newText = document.createTextNode('quinoa');
+
+//tökum elementiö sem við bjuggum til með creaeElement of setjum textann sem er inni
+//breytunni newText inni þetta element með appendChild.
+newEL.appendChild(newText);
+
+//finnum nuna staðsetninguna þar sem við viljum setja elementið i newEl með þvi að na i
+//gildið inni ul elemtingu
+let position = document.getElementsByTagName('ul')[0];
+
+//appendChild setur newEl aftast i röðina i li töggum. appendChild steur s.s. alltaf aftast i röðina
+position.appendChild(newEL);
+
+//naum i elementið sem a að eyða og setjum i breytu
+let removeEL = document.getElementsByTagName('li')[3];
+
+//finnum elementið sem geymir elemnetið sem a að eyða
+var containerEL = document.getElementsByTagName('ul')[0];
+
+//eyðum ut elementinu með removechild.Removechild skoðar þau element sem eru inni
+//elementinu sem er i containerEl og finnur elementið sem er i breytunniw removeEl og eyðir þvi ut.
+containerEL.removeChild(removeEL);
+
+//naum i element með id one
+let firstItem = document.getElementById('one');
+if (firstItem.hasAttribute('class')){ // ef þetta element er með class
+    let attr = firstItem.getAttribute('class');// naum þa i hvaða class það err með og setjum i breytu
+
+    //birtum hvaða class þett element er með i elemtinu scriptResults
+    let el = document.getElementById('scriptResults');
+    el.innerHTML
+}
+
+
+let firstItem = document.getElementById('one');// naum i element með id one
+firstItem.className = 'complete';              // gefum þvi class complete
+
+let fourthItem = document.getElementsByTagName('li').item(3);//naum i fjorða hlutin i li töggunum
+fourthItem.setAttribute('class', 'cool');                    //bætum við class cool a það element
+
+let firstItem = document.getElementById('one'); // naum i element með id one
+if(firstItem.hasAttribute('class')){             // ef .að er með class
+    firstItem.removeAttribute('class')          //eyða class af þessu element
+}
