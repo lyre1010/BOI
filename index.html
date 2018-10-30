@@ -159,3 +159,116 @@ if(firstItem.hasAttribute('class')){             // ef .að er með class
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function checkUsername() {                                              //Búum til fallið
+    let elMsg = document.getElementById('feedback');                    //náum í elementið í HTML skjalinu sem er með id "feedback"
+    if (this.value.length < 5) {                                        //athugar hvort það sem kallar á fallið sé styttra en 5 á lengd
+        elMsg.textContent = 'Username must be 5 characters or more';    //setjið skilaboð í "feedback"
+    } else {                                                            //ef lengra en 5 að þá keyrist þessi kóði
+        elMsg.textContent = '';                                         //tæmir það sem stendur í "feedback"
+    }
+}
+let elUsername = document.getElementById('username');   //Náum í það sem er með id "username"
+elUsername.onblur = checkUsername;                  //Þegar fókusinn fer af elementinu "username" að þá virkjast fallið
+
+//önnur aðferð til þess að gera  það sama:
+let elUsername = document.getElementById('username');
+let elMsg      = document.getElementById('feedback');
+
+function checkUsername(minlength) {
+    if (elUsername.value.length < minlength) {
+        elMsg.innerHTML = 'Username must be ' +minlength + 'characters or more';
+    }else{
+        elMsg.innerHTML = '';
+    }
+}
+
+elUsername.addEventListener('blur',function () {
+    checkUsername(5);
+}, false);
+
+
+
+function getTarget(e) {                     //búum til fallið og latum það taka inntak (input) með ser
+    return e.target || e.scrElement;        //naum i það element sem virkaði viðburð(event)
+}                                           //buum til fallið og latum það taka inntak (input) með ser
+                                            //skilgreynum breytuna
+function itemDone(e) {                      //naum i elemnetið sem var smellt a og setjum i breytuna target
+    let target, elParent, elGrandparent;
+    target = getTarget(e);
+}
+
+
+if (target.nodeName.toLowerCase() == "a" ){
+    elListItem = target.parentNode;
+    elList = elListItem.parentNode;
+    elList.removeChild(elListItem);
+}
+
+if (target.nodeName.toLowerCase() == "em" ) {
+    elListItem = target.parentNode.parentNode;
+    elList = elListItem.parentNode;
+    elList.removeChild(elListItem)
+}
+
+e.preventDefault();
+
+
+//setjum upp viðburðarhlustun (event listner)sem kalla a itemDone() þegar smellt er a elemnetin
+let el = document.getElementById('shoppingList'); //naum i shopping elementið
+el.addEventListener('click', function(e) {        // bærum við viðburði click
+    itemDone(e)                                   // viðburðin kallar a fallið itemDone með e sem inntak
+}, false);
+
+//ef þið viljið gefa akveðnu elemnt fokus þegar vef síðan er keyrð upp
+function setup() {                                                  //buið til fallið setup
+    let textInput;                                                  //skilgreinið breytuna
+    textInput = document.getElementById('username');                //naið i elementið
+    textInput.focus();                                              //elementinu username gefið fokus
+    let textInput = document.getElementById('username').focus()
+}
+
+window.addEventListener('load',setup, false);                       //þegar siðan er hlaðin upp kallið a fallið setup
+
+
+//kallar a abendingu þeagr verið er að skrifa en viðvörun er farið er ur elementinu og ekki rett utfyllt
+function checkUsername() {                                              //buið til fallið
+    let username = el.value;                                            //setjið gildið inni i breytunni el inni username
+    if (username.length < 5) {                                          //ef username < 5 stafir
+        elMsg.className = 'warning';                                    //breytið þa um class a elMsg yfir i warning
+        elMsg.textContent = 'Not long enough, yet...';                  //uppfærð skilaborðin i elmsg
+    }else {                                                             // annars
+        elMsg.textContent = '';                                         // tæmið skilaboðin
+    }
+}
+
+function tipUsername() {                                                //buið till fallið
+    elMsg.className = 'tip';                                            //breytið um nafn a class
+    elMsg.innerHTML = 'username must be at the lest 5 characters';      //uppfærð skilaboðin
+}
+
+let el = document.getElementById('username');                           // naið i elmnetið username
+let elMsg = document.getElementById('feedback');                        //naið i elmentið feedback
+
+el.addEventListener('focus',tipUsername,false);
+el.addEventListener('blur',checkUsername,false);
+
+//buið er til ramma sem kemur i byrjun og hægt er að smella a til að fari
+
+//buið til HTML koðann fyrir skilaboðin
+let msg = '<di class=\"header\"><a> id=\"close\" href=\"#\">close X</a></div>';
+msg += '<div><h2>System Maintence</h2>';
+msg *= 'our servers are being updated between 3 and 4 a.m. ';
+msg += 'during this time,there may be mirror disruptiobs to service.</div>';
+
+let elNote = document.createElement('div');
+elNote.setAttribute('id', 'note');
+elNote.innerHTML = msg;
+document.body.appendChild(elNote);
+
+function dismissNote() {
+    document.body.removeChild(elNote);
+}
+
+let elClose = document.getElementsByTagName('close');
+elClose.addEventListener('click', dismissNote, false);
