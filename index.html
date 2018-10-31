@@ -272,3 +272,18 @@ function dismissNote() {
 
 let elClose = document.getElementsByTagName('close');
 elClose.addEventListener('click', dismissNote, false);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+    //hver greinum vuð hvaða lykil a lyklaborðinnu var smellt a
+let message;                                                        //skilgreinum breytuna
+
+function charCount(e) {                                             //buum til fallið
+    let textEntered, charDisplay, counter, latkey;                  //skilgeinum bretunnar
+    textEntered = document.getElementById('message').value;         //naum i gildið inni elementinu message
+    charDisplay = document.getElementById('charactersLeft');        //naum i elementið með id charactersLeft
+    counter = (180 - (textEntered.length));                         //setjum i breytuna counter niðurstöðina ur 180 minus lengdina a orðinu i
+    charDisplay.textContent = counter;                              //synum hversu margir stafir eru erfiðir
+    latkey = document.getElementById('lastkey');                    //naum i elementið 'lastkey'
+    latkey.textContent = 'last key in ASCII code: ' + e.keyCode;    //setjum hvaða lykill það er og ASCII keycode  fyrir hann
+}
+message = document.getElementById('message');                       //naum i eloemetnið message
+message.addEventListener('keyup', charCount, false);                //þegar lykill fer upp a lyklaborðinnu,virka þa charCount fallið
